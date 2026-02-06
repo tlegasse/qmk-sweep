@@ -6,7 +6,8 @@ enum layers {
     SYM,
     EXT,
     FNC,
-    SETTINGS
+    SETTINGS,
+    GMOD
 };
 
 // Custom keycodes for macros
@@ -35,6 +36,7 @@ enum combos {
     COMBO_SAVE,
     COMBO_TAB,
     COMBO_TMUX_SRCH
+    COMBO_GMOD
 };
 
 const uint16_t PROGMEM combo_settings[] = {LT(2,KC_BSPC), LGUI_T(KC_ENT), COMBO_END};
@@ -44,6 +46,7 @@ const uint16_t PROGMEM combo_ctrla[] = {KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_save[] = {KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_tmux_srch[] = {KC_Q, KC_W, COMBO_END};
+const uint16_t PROGMEM combo_gmod[] = {LT(EXT,KC_BSPC), LGUI_T(KC_ENT), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [COMBO_SETTINGS] = COMBO(combo_settings, MO(SETTINGS)),
@@ -52,7 +55,8 @@ combo_t key_combos[COMBO_COUNT] = {
     [COMBO_CTRLA] = COMBO(combo_ctrla, LCTL(KC_A)),
     [COMBO_SAVE] = COMBO(combo_save, LCTL(KC_SCLN)),
     [COMBO_TAB] = COMBO(combo_tab, KC_TAB),
-    [COMBO_TMUX_SRCH] = COMBO(combo_tmux_srch, TMUX_SRCH)
+    [COMBO_TMUX_SRCH] = COMBO(combo_tmux_srch, TMUX_SRCH),
+    [COMBO_GMOD] = COMBO(combo_gmod, MO(GMOD))
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -89,6 +93,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,
         KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,
                                                         KC_NO,          KC_NO,          KC_NO,          KC_NO
+    ),
+
+    [GMOD] = LAYOUT_split_3x5_2(
+        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        LGUI(KC_1),     LGUI(KC_2),     LGUI(KC_3),     KC_TRNS,
+        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        LGUI(KC_4),     LGUI(KC_5),     LGUI(KC_6),     LGUI(KC_0),
+        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        LGUI(KC_7),     LGUI(KC_8),     LGUI(KC_9),     KC_TRNS,
+                                                        KC_LSFT,        KC_TRNS,        KC_TRNS,        KC_TRNS
     )
 };
 
